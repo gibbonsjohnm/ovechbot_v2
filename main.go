@@ -15,7 +15,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-// Variables used for command line parameters
+// Variables
 var (
 	Token    = os.Getenv("DISCORD_BOT_TOKEN")
 	Channel  = os.Getenv("DISCORD_BOT_CHANNEL")
