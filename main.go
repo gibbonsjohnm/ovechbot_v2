@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -47,11 +46,6 @@ type Game struct {
 
 type ScoreData struct {
 	Games []Game `json:"games"`
-}
-
-func init() {
-	flag.StringVar(&Token, "t", "", "Bot Token")
-	flag.Parse()
 }
 
 func main() {
