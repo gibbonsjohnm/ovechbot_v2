@@ -89,7 +89,7 @@ func main() {
 					lastGoals = goals
 				} else {
 					// Update the bot's status.
-					err = dg.UpdateWatchStatus(0, "Not Ovechkin :/")
+					err = dg.UpdateWatchStatus(0, "not Ovechkin :/")
 					if err != nil {
 						log.Println("Error updating status:", err)
 						return
