@@ -83,7 +83,7 @@ func main() {
 					goals := getGoals()
 					if goals > lastGoals && lastGoals != 0 {
 						log.Printf("Ovechkin scored goal #%d! Sending message.", goals)
-						message := fmt.Sprintf("🚨 **Alexander Ovechkin has scored goal #%d** 🚨\n\n:hockey: ***Goals remaining to tie Gretzky: %d***", goals, 894-goals)
+						message := fmt.Sprintf("🚨 **Alexander Ovechkin has scored goal #%d** 🚨\n\n:hockey: *Goals remaining to tie Gretzky*: **%d**", goals, 894-goals)
 						sendImageWithMessage(dg, Channel, message, "images/8471214.png")
 					}
 					lastGoals = goals
