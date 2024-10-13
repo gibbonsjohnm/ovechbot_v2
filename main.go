@@ -67,13 +67,15 @@ func main() {
 	log.Println("Bot is now running. Press CTRL-C to exit.")
 
 	// Create a ticker that ticks every 5 seconds
-	ticker := time.NewTicker(5 * time.Second)
+	ticker := time.NewTicker(30 * time.Second)
 	go func() {
 		var lastGoals int
 		for {
 			select {
 			case <-ticker.C:
+				log.Println("Checking if Ovechkin is playing...")
 				if isOvechkinPlaying() {
+					log.Println("Ovechkin is playing!")
 					// Update the bot's status.
 					err = dg.UpdateWatchStatus(0, homeTeam+" vs. "+awayTeam)
 					if err != nil {
@@ -89,6 +91,7 @@ func main() {
 					lastGoals = goals
 				} else {
 					// Update the bot's status.
+					log.Println("Ovechkin is not playing")
 					err = dg.UpdateWatchStatus(0, "No Caps Games :(")
 					if err != nil {
 						log.Println("Error updating status:", err)
