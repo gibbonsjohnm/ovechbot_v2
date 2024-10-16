@@ -73,8 +73,6 @@ func main() {
 		for {
 			select {
 			case <-ticker.C:
-				log.Println("Checking if Ovechkin is playing...")
-
 				// Check if WebSocket connection is still alive
 				if dg == nil || !dg.DataReady {
 					log.Println("WebSocket connection lost, attempting to reconnect...")
@@ -86,7 +84,6 @@ func main() {
 				}
 
 				if isOvechkinPlaying() {
-					log.Println("Ovechkin is playing!")
 					err = dg.UpdateWatchStatus(0, homeTeam+" vs. "+awayTeam)
 					if err != nil {
 						log.Println("Error updating status:", err)
@@ -101,7 +98,6 @@ func main() {
 					}
 					lastGoals = goals
 				} else {
-					log.Println("Ovechkin is not playing")
 					err = dg.UpdateWatchStatus(0, "No Caps Games :(")
 					if err != nil {
 						log.Println("Error updating status:", err)
