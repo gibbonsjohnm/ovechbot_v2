@@ -76,6 +76,7 @@ func main() {
 				// Check if WebSocket connection is still alive
 				if dg == nil || !dg.DataReady {
 					log.Println("WebSocket connection lost, attempting to reconnect...")
+					dg.Close()
 					err := dg.Open()
 					if err != nil {
 						log.Println("Error reconnecting:", err)
