@@ -70,6 +70,7 @@ func main() {
 	ticker := time.NewTicker(30 * time.Second)
 	go func() {
 		var lastGoals int
+		firstRun := true // Track the first run
 		for {
 			select {
 			case <-ticker.C:
@@ -92,7 +93,11 @@ func main() {
 					}
 
 					goals := getGoals()
-					if goals > lastGoals && lastGoals != 0 {
+					if firstRun { // Set lastGoals on first run
+						lastGoals = goals
+						firstRun = false
+					}
+					if goals > lastGoals {
 						log.Printf("Ovechkin scored goal #%d! Sending message.", goals)
 						message := fmt.Sprintf("🚨 **Alexander Ovechkin has scored goal #%d** 🚨\n\n:hockey: *Goals remaining to tie Gretzky*: **%d**", goals, 894-goals)
 						sendImageWithMessage(dg, Channel, message, "images/8471214.png")
